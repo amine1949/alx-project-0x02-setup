@@ -65,3 +65,28 @@ export default function UsersPage() {
         </div>
     );
 }
+
+export async function getStaticProps() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch Users');
+        }
+
+        const users = await response.json();
+
+        return {
+            props: {
+                users,
+            },
+        };
+    } catch (err) {
+        return {
+            props: {
+                users: [],
+                error: err instanceof Error ? err.message : 'An unknown error occurred',
+            },
+        };
+    }
+}
