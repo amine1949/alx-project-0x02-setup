@@ -25,7 +25,6 @@ const Home = () => {
                         <Card
                             title="Project Features"
                             content="Includes reusable components, TypeScript interfaces, and responsive design."
-                            className="border-l-4 border-blue-500"
                         />
 
                         <Card
