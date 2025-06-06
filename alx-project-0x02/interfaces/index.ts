@@ -4,6 +4,13 @@ export interface CardProps  {
     content: string;
 }
 
+export interface PostProps {
+    id: number;
+    title: string;
+    body: string;
+    userId: number;
+}
+
 export interface ButtonProps {
     children: React.ReactNode;
     onClick?: () => void;
