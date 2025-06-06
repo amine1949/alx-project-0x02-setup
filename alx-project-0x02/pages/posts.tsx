@@ -68,3 +68,30 @@ export default function PostsPage() {
         </div>
     );
 }
+
+export async function getStaticProps() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10');
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch posts');
+        }
+
+        const posts = await response.json();
+
+        return {
+            props: {
+                posts,
+            },
+            // Re-generate the page at most once per 10 seconds
+            revalidate: 10, // Optional: for Incremental Static Regeneration
+        };
+    } catch (err) {
+        return {
+            props: {
+                posts: [],
+                error: err instanceof Error ? err.message : 'An unknown error occurred',
+            },
+        };
+    }
+}
