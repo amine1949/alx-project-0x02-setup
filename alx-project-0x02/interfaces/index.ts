@@ -1,5 +1,6 @@
-export interface User {
-    id: string;
-    name: string;
-    email: string;
+
+export interface CardProps  {
+    title: string;
+    content: string;
+    className?: string;
 }
